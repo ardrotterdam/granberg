@@ -142,7 +142,7 @@
       { code:"1010", name:"Assembly Gloves, Goatskin — 113.1010", tags:["assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-1010", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.1010%2F113.1010+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"1015", name:"Assembly Winter Gloves, Goatskin (fleece lined) — 113.1015", tags:["winter","assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-1015", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.1015%2F113.1015+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"1190", name:"Cut & Impact Resistant Gloves, Kevlar® lined — 113.1190", tags:["cut","impact"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-1190", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.1190%2F113.1190+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"2209", name:"Tactical Rescue Gloves — 120.2209", tags:["tactical","impact"], link:"https://www.granberg.no/tactical-security/tactical-gloves/granberg-2209", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F120.2209%2F120.2209+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"2209", name:"Tactical Rescue Gloves — 119.2209", tags:["tactical","impact"], link:"https://www.granberg.no/tactical-security/tactical-gloves/granberg-2209", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F119.2209%2F119.2209+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"4190", name:"All‑round Work Gloves, cow grain — 113.4190", tags:["all‑round"], link:"https://www.granberg.no/industrial/all-round-gloves/granberg-4190", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190%2F113.4190+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"4190A", name:"All‑round Work Gloves, goatskin — 113.4190A", tags:["all‑round"], link:"https://www.granberg.no/industrial/all-round-gloves/granberg-4190a", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190A%2F113.4190A+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"5501", name:"Cut‑Resistant Gloves with Impact Protection — 115.5501", tags:["cut","impact"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-5501", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.5501%2F115.5501+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
@@ -182,6 +182,10 @@
           img.loading = 'lazy';
           img.alt = x.code + ' thumbnail';
           img.src = x.img;
+          // fallback if broken
+          img.addEventListener('error',()=>{
+            img.replaceWith(Object.assign(document.createElement('div'),{innerHTML:`<svg viewBox=\"0 0 400 300\" width=\"100%\" height=\"100%\" role=\"img\" aria-label=\"Placeholder\"><rect width=\"400\" height=\"300\" fill=\"#0c1425\"/><text x=\"50%\" y=\"52%\" text-anchor=\"middle\" font-size=\"34\" fill=\"#506089\" font-family=\"ui-sans-serif, system-ui\">Image unavailable</text></svg>`}));
+          });
           thumb.appendChild(img);
         } else {
           thumb.innerHTML = `<svg viewBox="0 0 400 300" width="100%" height="100%" role="img" aria-label="Placeholder image"><rect width="400" height="300" fill="#0c1425"/><text x="50%" y="52%" text-anchor="middle" font-size="34" fill="#506089" font-family="ui-sans-serif, system-ui">${x.code}</text></svg>`;
