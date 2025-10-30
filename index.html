@@ -11,15 +11,15 @@
     }
     *{box-sizing:border-box}
     body{margin:0;background:linear-gradient(180deg,#0b1220,#0e1729 30%,#0b1220);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
-    header{position:sticky;top:0;background:rgba(11,18,32,.8);backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid var(--ring);z-index:10}
-    .wrap{max-width:1100px;margin:0 auto;padding:22px}
+    header{position:sticky;top:0;background:rgba(11,18,32,.8);backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid var(--ring);z-index:10} 
+    .wrap{max-width:1100px;margin:0 auto;padding:12px 18px} 
     h1{margin:0 0 6px;font-size:clamp(20px,3vw,28px)}
     .sub{margin:0;color:var(--muted)}
-    .toolbar{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-    input[type="search"], select{background:#0c1425;border:1px solid var(--ring);color:var(--text);padding:10px 12px;border-radius:10px;outline:none}
+    .toolbar{margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;max-width:600px} 
+    input[type="search"], select{background:#0c1425;border:1px solid var(--ring);color:var(--text);padding:6px 8px;border-radius:10px;outline:none;font-size:14px} 
     input[type="search"]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(51,214,166,.15)}
 
-    main{padding:26px 22px}
+    main{padding:18px 18px} 
     .grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
     .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease, border-color .2s}
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.35);border-color:#3b4f80}
@@ -138,24 +138,36 @@
     const items = [
       { code:"0400", name:"Assembly Winter Gloves Black Diamond – 109.0400W", tags:["winter","assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-0400w/9", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F109.0400W%2F109.0400W+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"0433", name:"Assembly Gloves (PU) — 100.0433", tags:["assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-0433", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F100.0433%2F100.0433+-+RGB+-+Main.jpg&width=800" },
-      { code:"0550", name:"Assembly Gloves — 114.0550 (nitrile foam microdots)", tags:["assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-0550", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F114.0550%2F114.0550+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"0550", name:"Assembly Gloves — 114.0550 (nitrile foam microdots)", tags:["assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-0550", imgCandidates:[
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F114.0550%2F114.0550+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800",
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F114.0550%2F114.0550+%E2%80%93+RGB+%E2%80%93+Main.png&width=800"
+      ] },
       { code:"1010", name:"Assembly Gloves, Goatskin — 113.1010", tags:["assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-1010", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.1010%2F113.1010+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"1015", name:"Assembly Winter Gloves, Goatskin (fleece lined) — 113.1015", tags:["winter","assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-1015", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.1015%2F113.1015+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"1190", name:"Cut & Impact Resistant Gloves, Kevlar® lined — 113.1190", tags:["cut","impact"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-1190", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.1190%2F113.1190+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"2209", name:"Tactical Rescue Gloves — 119.2209", tags:["tactical","impact"], link:"https://www.granberg.no/tactical-security/tactical-gloves/granberg-2209", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F119.2209%2F119.2209+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"4190", name:"All‑round Work Gloves, cow grain — 113.4190", tags:["all‑round"], link:"https://www.granberg.no/industrial/all-round-gloves/granberg-4190", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190%2F113.4190+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"4190A", name:"All‑round Work Gloves, goatskin — 113.4190A", tags:["all‑round"], link:"https://www.granberg.no/industrial/all-round-gloves/granberg-4190a", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190A%2F113.4190A+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"5501", name:"Cut‑Resistant Gloves with Impact Protection — 115.5501", tags:["cut","impact"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-5501", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.5501%2F115.5501+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"5503", name:"Cut‑Resistant Gloves with Impact Protection — 115.5503", tags:["cut","impact"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-5503", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.5503%2F115.5503+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"591", name:"Cut‑Resistant Gloves (Typhoon®/PU) — 116.591", tags:["cut"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-591", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F116.591%2F116.591+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"9001", name:"Cut F Impact Hi‑Viz™ Protective Gloves — 115.9001", tags:["cut","impact"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-9001", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.9001%2F115.9001+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"9002", name:"Cut D Impact Hi‑Viz™ Protective Gloves — 115.9002", tags:["cut","impact"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-9002", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.9002%2F115.9002+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"EX1119", name:"EX® Cut‑Resistant Assembly – 120.1119", tags:["cut","assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-ex-1119", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F120.1119%2F120.1119+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"EX3250", name:"EX® Cut‑ & Impact‑Resistant Gloves — 115.3250", tags:["cut","impact"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-ex-3250", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.3250%2F115.3250+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"EX3260", name:"EX® Cut, Impact & Water‑Resistant Gloves — 115.3260", tags:["cut","impact","waterproof"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-ex-3260", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.3260%2F115.3260+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"EX3270", name:"EX® Cut, Impact & Water‑Resistant Winter Gloves — 115.3270W", tags:["cut","impact","winter","waterproof"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-ex-3270w", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.3270W%2F115.3270W+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"EX4330", name:"EX® Anti‑Vibration Gloves — 107.4330", tags:["anti‑vibration"], link:"https://www.granberg.no/industrial/vibration-reducing-gloves/granberg-ex-4330", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F107.4330%2F107.4330+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
-      { code:"EX4999W", name:"EX® Cut, Impact & Water‑Resistant Winter Gloves — 115.4999W", tags:["cut","impact","winter","waterproof"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-ex-4999w", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.4999W%2F115.4999W+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"2209", name:"Tactical Rescue Gloves — 119.2209", tags:["tactical","impact"], link:"https://www.granberg.no/tactical-security/tactical-gloves/granberg-2209", imgCandidates:[
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F119.2209%2F119.2209+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800",
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F119.2209%2F119.2209+%E2%80%93+RGB+%E2%80%93+Main.png&width=800"
+      ] },
+      { code:"4190", name:"All-round Work Gloves, cow grain — 113.4190", tags:["all-round"], link:"https://www.granberg.no/industrial/all-round-gloves/granberg-4190", imgCandidates:[
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190%2F113.4190+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800",
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190%2F113.4190+%E2%80%93+RGB+%E2%80%93+Main.png&width=800"
+      ] },
+      { code:"4190A", name:"All-round Work Gloves, goatskin — 113.4190A", tags:["all-round"], link:"https://www.granberg.no/industrial/all-round-gloves/granberg-4190a", imgCandidates:[
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190A%2F113.4190A+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800",
+        "https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F113.4190A%2F113.4190A+%E2%80%93+RGB+%E2%80%93+Main.png&width=800"
+      ] },
+      { code:"5501", name:"Cut-Resistant Gloves with Impact Protection — 115.5501", tags:["cut","impact"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-5501", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.5501%2F115.5501+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"5503", name:"Cut-Resistant Gloves with Impact Protection — 115.5503", tags:["cut","impact"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-5503", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.5503%2F115.5503+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"591", name:"Cut-Resistant Gloves (Typhoon®/PU) — 116.591", tags:["cut"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-591", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F116.591%2F116.591+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"9001", name:"Cut F Impact Hi-Viz™ Protective Gloves — 115.9001", tags:["cut","impact"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-9001", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.9001%2F115.9001+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"9002", name:"Cut D Impact Hi-Viz™ Protective Gloves — 115.9002", tags:["cut","impact"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-9002", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.9002%2F115.9002+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"EX1119", name:"EX® Cut-Resistant Assembly – 120.1119", tags:["cut","assembly"], link:"https://www.granberg.no/industrial/assembly-gloves/granberg-ex-1119", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F120.1119%2F120.1119+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"EX3250", name:"EX® Cut- & Impact-Resistant Gloves — 115.3250", tags:["cut","impact"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-ex-3250", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.3250%2F115.3250+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"EX3260", name:"EX® Cut, Impact & Water-Resistant Gloves — 115.3260", tags:["cut","impact","waterproof"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-ex-3260", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.3260%2F115.3260+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"EX3270", name:"EX® Cut, Impact & Water-Resistant Winter Gloves — 115.3270W", tags:["cut","impact","winter","waterproof"], link:"https://www.granberg.no/industrial/impact-resistant-gloves/granberg-ex-3270w", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.3270W%2F115.3270W+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"EX4330", name:"EX® Anti-Vibration Gloves — 107.4330", tags:["anti-vibration"], link:"https://www.granberg.no/industrial/vibration-reducing-gloves/granberg-ex-4330", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F107.4330%2F107.4330+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
+      { code:"EX4999W", name:"EX® Cut, Impact & Water-Resistant Winter Gloves — 115.4999W", tags:["cut","impact","winter","waterproof"], link:"https://www.granberg.no/industrial/cut-resistant-gloves/granberg-ex-4999w", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F115.4999W%2F115.4999W+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" },
       { code:"0020A", name:"Glove Clip, Pinch Clasp — 004.0020A", tags:["accessory"], link:"https://www.granberg.no/food-fisheries/glove-accessories/zwnjgranberg-0020a", img:"https://www.granberg.no/Admin/Public/GetImage.ashx?format=webp&image=%2FFiles%2FImages%2FEcom%2FProducts%2F004.0020%2F004.0020+%E2%80%93+RGB+%E2%80%93+Main.jpg&width=800" }
     ];
 
@@ -177,15 +189,24 @@
         card.className = 'card';
         const thumb = document.createElement('div');
         thumb.className = 'thumb';
-        if(x.img){
+        if(x.img || x.imgCandidates){
           const img = document.createElement('img');
           img.loading = 'lazy';
           img.alt = x.code + ' thumbnail';
-          img.src = x.img;
-          // fallback if broken
-          img.addEventListener('error',()=>{
-            img.replaceWith(Object.assign(document.createElement('div'),{innerHTML:`<svg viewBox=\"0 0 400 300\" width=\"100%\" height=\"100%\" role=\"img\" aria-label=\"Placeholder\"><rect width=\"400\" height=\"300\" fill=\"#0c1425\"/><text x=\"50%\" y=\"52%\" text-anchor=\"middle\" font-size=\"34\" fill=\"#506089\" font-family=\"ui-sans-serif, system-ui\">Image unavailable</text></svg>`}));
-          });
+          // pick source
+          let candidates = [];
+          if(x.img) candidates = [x.img];
+          if(x.imgCandidates) candidates = x.imgCandidates;
+          let i = 0;
+          const tryNext = ()=>{
+            if(i>=candidates.length){
+              img.replaceWith(Object.assign(document.createElement('div'),{innerHTML:`<svg viewBox=\"0 0 400 300\" width=\"100%\" height=\"100%\" role=\"img\" aria-label=\"Placeholder\"><rect width=\"400\" height=\"300\" fill=\"#0c1425\"/><text x=\"50%\" y=\"52%\" text-anchor=\"middle\" font-size=\"34\" fill=\"#506089\" font-family=\"ui-sans-serif, system-ui\">Image unavailable</text></svg>`}));
+              return;
+            }
+            img.src = candidates[i++];
+          };
+          img.addEventListener('error', tryNext);
+          tryNext();
           thumb.appendChild(img);
         } else {
           thumb.innerHTML = `<svg viewBox="0 0 400 300" width="100%" height="100%" role="img" aria-label="Placeholder image"><rect width="400" height="300" fill="#0c1425"/><text x="50%" y="52%" text-anchor="middle" font-size="34" fill="#506089" font-family="ui-sans-serif, system-ui">${x.code}</text></svg>`;
