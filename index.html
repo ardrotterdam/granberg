@@ -52,6 +52,12 @@
   .winter-card .subtitle{color:var(--muted);font-size:13px;margin-top:4px}
   .winter-card .cta{margin-top:10px}
   .winter-card .cta .btn{display:inline-block}
+.notice{background:#b00020;color:#fff;border-bottom:2px solid #7a0016}
+.notice .wrap{display:flex;align-items:center;gap:14px;justify-content:space-between}
+.notice .msg{font-weight:700}
+.notice .sub{color:#ffe6ea}
+.notice .close{appearance:none;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;padding:6px 10px;border-radius:8px;font-weight:700}
+.notice .close:hover{background:rgba(255,255,255,.16)}
 </style>
 </head>
 <body>
@@ -70,6 +76,16 @@
       </div>
     </div>
   </header>
+  <!-- RED DISCLAIMER BANNER (not a shop) -->
+  <div class="notice" id="disclaimer">
+    <div class="wrap">
+      <div>
+        <div class="msg">Preview / Not a Storefront</div>
+        <div class="sub">This page is a shareable overview for Granberg. All links go to granberg.no. Our Benelux e‑commerce site will use our own checkout later.</div>
+      </div>
+      <button class="close" id="dismissDisclaimer" aria-label="Hide disclaimer">Got it</button>
+    </div>
+  </div>
 
   <main>
   <!-- Highlighted EX1119 section -->
@@ -236,6 +252,7 @@
         a.textContent = x.link ? 'Open product' : 'Add link…';
         a.href = x.link || '#';
         a.target = x.link ? '_blank' : '';
+        a.rel = 'noopener noreferrer';
         row.appendChild(a);
         meta.appendChild(code);
         meta.appendChild(name);
@@ -258,8 +275,15 @@
 
     // Apply fallback to featured images
     document.querySelectorAll('.featured-gallery img').forEach(addImgFallback);
-('input', render);
-    seg.addEventListener('change', render);
+
+    // Disclaimer banner persistence
+    const disc = document.getElementById('disclaimer');
+    const discBtn = document.getElementById('dismissDisclaimer');
+    if(localStorage.getItem('hideDisclaimer')==='1'){ disc.style.display='none'; }
+    discBtn.addEventListener('click',()=>{ disc.style.display='none'; localStorage.setItem('hideDisclaimer','1'); });
+
+    q.addEventListener('input', render);
+    seg.addEventListener('change', render);('change', render);
     render();
   </script>
 </body>
